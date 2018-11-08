@@ -1,2 +1,0 @@
-# VUE
-VUE.js Project
