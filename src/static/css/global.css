@@ -1,0 +1,23 @@
+    /*全局样式*/
+    *{
+        font-family: '微软雅黑';
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 14px;
+    }
+    html {
+        line-height: 1.15;
+        /* 1 */
+        -ms-text-size-adjust: 100%;
+        /* 2 */
+        -webkit-text-size-adjust: 100%;
+        /* 2 */
+    }
+
+    /* 多出部分用省略号表示 , 用于一行 */
+    .wes {
+        overflow:hidden;
+        word-wrap:normal;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+    }
