@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+  <script type="">
+    $(function{
+      $.ajax({
+        method:'get',
+        url:'http://192.168.1.113:8081/admin/user/list?pageNum=1&pageSize=10&orgCode=19920101',
+        success:function(res){
+          console.log(res)
+        }
+      })
+    })
+    </script>
+</body>
+</html>

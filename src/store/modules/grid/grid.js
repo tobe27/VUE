@@ -1,9 +1,7 @@
 import axios from '../../axios'
 import actions from '../../action-types'
 import mutations from '../../mutation-types'
-import qs from 'qs'
 
-// import qs from 'qs'
 export default {
   state: {
     gridtotal: 0,
@@ -28,48 +26,43 @@ export default {
     }
   },
   actions: {
-    [actions.get.GRID_LIST] ({commit}, payload) {
-      let user=JSON.parse(sessionStorage.getItem('userObj'))
-      let link = `/gridinfo/list?pageNum=${payload.pageNum}&pageSize=${payload.pageSize}&accountId=`+user.accountId+'&roleId='+user.roles[0].roleId
+    [actions.get.GRID_LIST] ({ commit }, payload) {
+      let user = JSON.parse(sessionStorage.getItem('userObj'))
+      let link = `/grid/list?pageNum=${payload.pageNum}&pageSize=${payload.pageSize}&userId=` + user.id
+      link = link + '&roleId=' + user.roles[0].id + '&orgCode=' + user.orgCode
       if ('gridCode' in payload) link += '&gridCode=' + payload.gridCode
       if ('gridName' in payload) link += '&gridName=' + payload.gridName
-      if ('orgCode' in payload) link += '&orgCode=' + payload.orgCode
-      return axios.get(link).then(({data}) => {
+      return axios.get(link).then(({ data }) => {
         commit(mutations.GRID_LIST, data)
         return data
       })
     },
-    [actions.get.GRID_PERSON] ({commit}, idNumber) {
-      return axios.get('/gridinfo/' + idNumber).then(({data}) => {
+    [actions.get.GRID_PERSON] ({ commit }, idNumber) {
+      return axios.get('/grid/' + idNumber).then(({ data }) => {
         commit(mutations.GRID_PERSON, data)
         return data
       })
     },
-      [actions.get.GRID_HOME] ({commit}, payload) {
-          let link='/gridmap/list/'+payload.roleId+'/'+payload.orgCode
-          return axios.get(link).then(({data}) => {
-              return data
-          })
-      },
     [actions.delete.GRID_PERSON] (context, id) {
-      return axios.delete('/gridinfo/' + id)
+      return axios.delete('/grid/' + id)
     },
-    [ actions.put.GRID_PERSON ] (context, payload) {
-      return axios.put('/gridinfo/' + payload.gridCode, payload)
+    [actions.put.GRID_PERSON] (context, payload) {
+      return axios.put('/grid/' + payload.gridCode, payload)
     },
-    [ actions.post.GRID_PERSON ] (context, payload) {
-      return axios.post('/gridinfo', payload)
+    [actions.post.GRID_PERSON] (context, payload) {
+      return axios.post('/grid', payload)
     },
-    [actions.get.GRID_MAP] ({commit}, gridCode) {
-      return axios.get('/gridmap/' + gridCode).then(({data}) => {
+    [actions.get.GRID_MAP] ({ commit }, gridCode) {
+      return axios.get('/gridmap/' + gridCode).then(({ data }) => {
         return data
       })
     },
-    [actions.get.GRIDNAME_LIST] ({commit}, payload) {
-      let user=JSON.parse(sessionStorage.getItem('userObj'))
-      let link = `/gridinfo/list?pageNum=1&pageSize=1000&accountId=`+user.accountId+'&roleId='+user.roles[0].roleId
-      return axios.get(link).then(({data}) => {
-        // commit(mutations.GRIDNAME_LIST, data)
+    [actions.get.GRIDNAME_LIST] ({ commit }, payload) {
+      let user = JSON.parse(sessionStorage.getItem('userObj'))
+      let roleId = user.roles[0].id
+      let link ='/grid/list?userId=' +user.id +'&roleId=' +roleId +'&orgCode=' +user.orgCode+'&pageNum='+payload.pageNum+'&pageSize='+payload.pageSize
+      return axios.get(link).then(({ data }) => {
+        commit(mutations.GRIDNAME_LIST, data)
         return data
       })
     }

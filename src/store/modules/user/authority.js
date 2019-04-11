@@ -8,7 +8,7 @@ export default {
   state: {
     total: 0,
     list: [],
-    person: {},
+    person: {}
   },
   mutations: {
     [ mutations.AUTHORITY_PERSON ] (state, payload) {

@@ -1,23 +1,35 @@
-    /*全局样式*/
-    *{
-        font-family: '微软雅黑';
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        font-size: 14px;
-    }
-    html {
-        line-height: 1.15;
-        /* 1 */
-        -ms-text-size-adjust: 100%;
-        /* 2 */
-        -webkit-text-size-adjust: 100%;
-        /* 2 */
-    }
+/*全局样式*/
+*{
+  font-family: '微软雅黑';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+html {
+  line-height: 1.15;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
 
-    /* 多出部分用省略号表示 , 用于一行 */
-    .wes {
-        overflow:hidden;
-        word-wrap:normal;
-        white-space:nowrap;
-        text-overflow:ellipsis;
-    }
+/* 多出部分用省略号表示 , 用于一行 */
+.wes {
+  overflow:hidden;
+  word-wrap:normal;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+ul{
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+a{
+  color:#000000;
+}
